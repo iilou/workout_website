@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fjord+One&display=swap" rel="stylesheet"/>
+    <link href="plan.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="title_header">
+        <div class="title">Evolve (Placeholder)</div>
+        <div class="profile">
+            <div class="profile_name">iilou</div>
+            <div class="profile_image">
+                <img src="../temp_pfp.png" alt=""/>
+                <div class="profile_dropdown"></div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header_left">
+            <div class="header_premium">Premium</div>
+        </div>
+        <div class="header_right">
+            <a href="../home.html" class="header_home">Home</a>
+            <a href="" class="header_plan">Plan</a>
+            <div class="header_calendar">Calendar</div>
+            <div class="header_settings">Settings</div>
+        </div>  
+    </div>
+
+    <div class="main">
+        <div class="main-title">
+            <div class="box_title">Workout Plan</div>
+            <div class="type-selection">
+                <h1>Weekly</h1>
+            </div>
+        </div>
+        <div class="content-box" id="1">
+            <div class="day-selection">
+                <div class="day">Sunday</div>
+                <div class="day">Monday</div>
+                <div class="day">Tuesday</div>
+                <div class="day">Wednesday</div>
+                <div class="day">Thursday</div>
+                <div class="day">Friday</div>
+                <div class="day">Saturday</div>
+            </div>
+            <div class="editor-box-dropdown">
+                <button class="trigger1" onclick="document.querySelector('.editor-box').style.display = window.getComputedStyle(document.querySelector('.editor-box'), null).display == 'none'?'grid':'none'"></button>
+            </div>
+            <div class="editor-box">
+                <div class="preview">
+                    <div class="preview-box">
+                        <div class="preview-title">Day 1: Sunday</div>
+                        <div class="preview-list">
+                            <div class="preview-item">
+                                <div class="preview-item-sets">3x</div>
+                                <div class="preview-item-name">8/10/12 Push-Ups</div>
+                            </div>
+                            <div class="preview-item">
+                                <div class="preview-item-sets">3x</div>
+                                <div class="preview-item-name">8/10/12 Push-Ups</div>
+                            </div>
+                            <div class="preview-item">
+                                <div class="preview-item-sets">3x</div>
+                                <div class="preview-item-name">8/10/12 Push-Ups</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-caption">Exercise Routing Preview for Sunday</div>
+                </div>
+                <div class="list-container">
+                    <div class="list-title">Sunday's Exercise Plan</div>
+                    <div class="fdajfosdjif"></div>
+                    <div class="identifiers">
+                        <div class="i-name">Name</div>
+                        <div class="i-reps">Reps</div>
+                        <div class="i-sets">Sets</div>
+                    </div>
+                    <div class="fdajfosdjif"></div>
+                    <div class="list">
+                        <div class="l-name">Push-Ups</div>
+                        <div class="l-reps">10</div>
+                        <div class="l-sets">3x</div>
+                        <div class="l-name">Push-Ups</div>
+                        <div class="l-reps">10</div>
+                        <div class="l-sets">3x</div>
+                        <div class="l-name">Push-Ups</div>
+                        <div class="l-reps">10</div>
+                        <div class="l-sets">3x</div>
+                    </div>
+                    <div class="util">
+                        <div class="icon-list">
+                            <img src="../edit.png" alt=""/>
+                            <img src="../trash.png" alt=""/>
+                        </div>
+                        <div class="icon-list">
+                            <img src="../edit.png" alt=""/>
+                            <img src="../trash.png" alt=""/>
+                        </div>
+                        <div class="icon-list">
+                            <img src="../edit.png" alt=""/>
+                            <img src="../trash.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="save">
+            <button class="save-button">Save</button>
+        </div>
+    </div>
+</body>
+</html>
