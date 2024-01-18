@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fjord+One&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link href="main.css" rel="stylesheet"/>
+    <link href="../css/all.css" rel="stylesheet"/>
+
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+
+    <script src="../sampledata.js" defer></script>
+</head>
+<body>
+    <div class="title_header">
+        <div class="title">Fit Tracker</div>
+        <div class="profile">
+            <div class="profile_name">iilasdfdfou</div>
+            <div class="profile_image">
+                <img src="../temp_pfp.png" alt=""/>
+                <div class="profile_dropdown"></div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header_left">
+            <a class="header_premium">Premium</a>
+        </div>
+        <div class="header_right">
+            <a href="../home.html" class="header_home">Home</a>
+            <a href="../planner/plan.html" class="header_plan">Plan</a>
+            <a class="header_calendar">Calendar</a>
+            <a class="header_settings">Settings</a>
+        </div>  
+    </div>
+    <div class="main">
+        <div id="col1">
+            <div id="title-main">Today's Workout</div>
+            <div id="sub-main">Day 1: "Day 1"</div>
+            <div id="progress-pie-container"></div>
+        </div>
+        <div id="col2">
+            <div id="embed"></div>
+        </div>
+        <div id="col3">
+            <div id="routine-container">
+                <div id="routine-title">Day 1: "Woooo!!!"</div>
+                    <div id="routine-exercise-list">
+                        <div class="routine-exercise">
+                            <div class="routine-exercise-name">Push Ups</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                        </div>
+                        <div class="routine-exercise">
+                            <div class="routine-exercise-name">Sit Ups</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                        </div>
+                        <div class="routine-exercise">
+                            <div class="routine-exercise-name">Sit Ups</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                        </div>
+                        <div class="routine-exercise">
+                            <div class="routine-exercise-name">Sit Ups</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                            <div class="routine-exercise-sub">10 Reps</div>
+                        </div>
+                    </div>
+                    <div id="routine-progress">
+                        <div id="routine-progress-bar"></div>
+                        <div id="routine-progress-bar-number">70%</div>
+                    </div>
+                </div>
+                <script>let asdf = document.getElementById("routine-exercise-list").querySelectorAll(".routine-exercise"); for(let i = 0; i < asdf.length; i++) asdf[i].addEventListener("click", (e) => {asdf[i].className.includes("show")?asdf[i].className="routine-exercise":asdf[i].className="routine-exercise show"})</script>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onSpotifyIframeApiReady = (IFrameAPI) => {
+            const element = document.getElementById('embed');
+            const options = {
+                width:document.getElementById("embed").getBoundingClientRect().width,
+                height:document.getElementById("embed").getBoundingClientRect().height,
+                uri: 'spotify:playlist:4E5nw9xCw5fzMf5xPMUppP'
+            };
+            const callback = (EmbedController) => {};
+            IFrameAPI.createController(element, options, callback);
+        };
+    </script>
+</body>
+</html>

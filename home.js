@@ -1,8 +1,8 @@
 const dl = [   document.querySelector('.banner'),  document.querySelector('.planner'),    document.querySelector('.calendar'),]
 
 const inter_height = 800;
-const buffer_height = 140;
-const small_buffer_height = 60;
+const buffer_height = 0;
+const small_buffer_height = 40;
 const div_heights = [];
 for(const div of dl) div_heights.push(div.getBoundingClientRect().height);
 // div_heights[0] += 100;
