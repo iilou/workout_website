@@ -11,7 +11,20 @@ body{
     margin:0px;
     padding:0px;
     background-color: #2D2D2D;
-    overflow-y:scroll;
+    overflow-y:hidden;
+}
+
+#loading-cover{
+    position: absolute;
+    left:0;
+    width:100vw;
+    height:2000px;
+    z-index:10000;
+    background-color: #171717ee;
+    color:#d9d9d9;
+    text-align: center;
+    line-height:500px;
+    font-size:48px;
 }
 
 .main{

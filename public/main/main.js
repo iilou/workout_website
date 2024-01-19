@@ -1,14 +1,19 @@
 const app = firebase.app();
 const auth = firebase.auth();
-console.log(auth, "a");
-console.log("a");
+const db = firebase.firestore();
 var USEROBJECT = "";
+
+function handleUserFound(user){
+    document.getElementById("loading-cover").style.display = "none";
+    document.body.style.overflowY = "auto";
+}
 
 auth.onAuthStateChanged((user) => {
   if (user) {
     const uid = user.uid;
     USEROBJECT = user;
-    console.log(user, uid);
+    handleUserFound(user);
+    console.log(user);
   } else {
   }
 });
@@ -17,7 +22,7 @@ auth.onAuthStateChanged((user) => {
 const getCSSVar = (x) => window.getComputedStyle(document.documentElement).getPropertyValue(x);
 const setCSSVar = (x, val) => {document.documentElement.style.setProperty(x, val);}
 
-console.log(getCSSVar('--perc'));
+// console.log(getCSSVar('--perc'));
 
 function modifyProgressBar(delta, max){
     let nv = (1-parseInt(getCSSVar('--perc').split("%")[0])/100)+(delta/max);
@@ -25,7 +30,6 @@ function modifyProgressBar(delta, max){
     let pv = 100-parseInt(getCSSVar('--perc').split("%")[0]);
     let n = (Math.round((pv/100)*max)+delta)/max;
 
-    console.log(pv, n);
     setCSSVar('--perc', 100*(1-n)+"%");
     document.getElementById("routine-progress-bar-number").innerHTML = (n*100).toFixed(0)+"%";
 }
@@ -97,4 +101,4 @@ function loadRoutine(user){
 }
 
 
-loadRoutine("1111");
+// loadRoutine("1111");

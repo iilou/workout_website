@@ -1,6 +1,8 @@
 const app = firebase.app();
 const auth = firebase.auth();
 
+console.log("aaaa");
+
 auth.onAuthStateChanged((user) => {
   if (user) {
     const uid = user.uid;
