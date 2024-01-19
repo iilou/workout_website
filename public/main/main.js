@@ -1,4 +1,18 @@
-const user = "1111";
+const app = firebase.app();
+const auth = firebase.auth();
+console.log(auth, "a");
+console.log("a");
+var USEROBJECT = "";
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    const uid = user.uid;
+    USEROBJECT = user;
+    console.log(user, uid);
+  } else {
+  }
+});
+
 
 const getCSSVar = (x) => window.getComputedStyle(document.documentElement).getPropertyValue(x);
 const setCSSVar = (x, val) => {document.documentElement.style.setProperty(x, val);}
@@ -15,7 +29,6 @@ function modifyProgressBar(delta, max){
     setCSSVar('--perc', 100*(1-n)+"%");
     document.getElementById("routine-progress-bar-number").innerHTML = (n*100).toFixed(0)+"%";
 }
-
 
 function handleSubroutineClick(elm, i, j, cur, user, max, nm){
     if(elm.className.includes("complete")){
@@ -37,9 +50,6 @@ function handleSubroutineClick(elm, i, j, cur, user, max, nm){
         modifyRoutineProgress(user, i, j, true, 1-parseInt(getCSSVar('--perc').split("%")[0])/100);
     }
 }
-
-
-
 
 function loadRoutine(user){
     let GET = getCurrentDay(user, true);
@@ -87,4 +97,4 @@ function loadRoutine(user){
 }
 
 
-loadRoutine(user);
+loadRoutine("1111");

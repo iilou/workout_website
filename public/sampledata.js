@@ -1,4 +1,6 @@
-const defaulttempdata = () => {return {
+// console.log("a");
+
+const defaulttempdata ={
     users:{
         "1111":{
             username:"",
@@ -113,7 +115,7 @@ const defaulttempdata = () => {return {
             }
         }
     }
-}}
+}
 
 
 const addlocalstoragedata = () => {
@@ -124,30 +126,50 @@ const getlocalstoragedata = () => {
     return JSON.parse(localStorage.getItem("temp"));
 }
 
-// const tempdata = defaulttempdata();
-// addlocalstoragedata();
-const tempdata = getlocalstoragedata(); // doesnt happen in actual program, makeshift database
+const tempdata = defaulttempdata;
+addlocalstoragedata();
+// const tempdata = getlocalstoragedata(); // doesnt happen in actual program, makeshift database
 
-const defaultRoutineDay = {
-    0:{
-        name:"boo!",
-        set:3,
-        rep:15,
-        decrement:2,
-    },
-    1:{
-        name:"whoosh!",
-        set:3,
-        rep:15,
-        decrement:2,
-    },
-    2:{
-        name:"ooo!",
-        set:3,
-        rep:15,
-        decrement:2,
-    }
+// const defaultRoutineDay = {
+//     0:{
+//         name:"boo!",
+//         set:3,
+//         rep:15,
+//         decrement:2,
+//     },
+//     1:{
+//         name:"whoosh!",
+//         set:3,
+//         rep:15,
+//         decrement:2,
+//     },
+//     2:{
+//         name:"ooo!",
+//         set:3,
+//         rep:15,
+//         decrement:2,
+//     }
+// }
+
+const newUser = (user) => {
+    const db = firebase.firestore();
+    const user = db.collection('user').doc(user.uid).set({
+        displayName:"iilou",
+        email:user.email,
+        photo:"../planner/img/temp_pfp.png"
+    })
+    .then(() => {
+        console.log("Document successfully written!");
+    })
+    .catch((error) => {
+        console.error("Error writing document: ", error);
+    });
 }
+
+
+
+
+
 
 
 const updateCurrentDay = (user, dayofsequence, currentDate, routineDataForDay) => {
@@ -223,11 +245,11 @@ const editRoutineData = (user, newIntv, oldIntv) => {
 
 
 
-const getRoutineData = (user) => {
+function getRoutineData(user) {
     return structuredClone(tempdata.routineData[user]); //database read
 }
 
-const getRoutineDataForDay = (user, day) => {
+function getRoutineDataForDay(user, day) {
     return structuredClone(tempdata.routineData[user][day]); // database read
 }
 

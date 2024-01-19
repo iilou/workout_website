@@ -1,3 +1,5 @@
+console.log("b");
+
 function makeElement(tagName, className, text, attr) {
     var element = document.createElement(tagName);
     element.className = className;
@@ -15,6 +17,11 @@ function makeElement(tagName, className, text, attr) {
 let user = "1111";
 let day = 0;
 let routineData = getRoutineData(user);
+
+// getRoutineData(user).then(
+    
+// )
+
 
 const getNameInput = (i) => {return document.querySelector(".l-"+i+"-name")};
 const getRepInput = (i) => {return document.querySelector(".l-"+i+"-reps")};
@@ -261,7 +268,7 @@ function loadDayFunctions(user, data){
     type.addEventListener("click", () => { loadTypeInputFields(user, data) });
 }
 
+
 loadDayFunctions(user, routineData);
 loadDaySelectionButtons(user, routineData);
-typeHTML.field.style.display = "none";
 loadCurrentDayView(user, day, routineData);

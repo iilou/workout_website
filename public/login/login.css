@@ -1,0 +1,114 @@
+*{
+    font-family: 'Merriweather';
+}
+
+body{
+    padding:0;
+    margin:0;
+    outline: 0;
+    border:0;
+    overflow:hidden;
+}
+
+#main{
+    width:100%;
+    height:100vh;
+    padding-top:50px;
+    background-color: #212121;
+}
+
+#content{
+    margin:auto;
+    width:560px;
+    padding: 0 120px;
+    height:fit-content;
+    background-color: #354235;
+    border-radius:30px;
+
+    display:flex;
+    flex-direction: row;
+    /* column-gap:10px; */
+    flex-wrap:wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+#title{
+    font-size:48px;
+    font-weight:900;
+    color:#d9d9d9;
+    width:100%;
+    height:fit-content;
+    text-align: center;
+    /* margin-top:10px;
+    margin-bottom:40px; */
+    margin: 50px 0;
+}
+
+#username_box, #password_box, #email_box{
+    width:300px;
+    height:fit-content;
+    font-size:18px;
+    background-color: #676767;
+    color:#d9d9d9;
+    border:none;
+    outline:none;
+    padding:7px 10px;
+    margin: 4px auto;
+}
+
+#username-title, #password-title, #email-title{
+    width:110px;
+    height:fit-content;
+    font-size:18px;
+    font-weight:900;
+    background-color: #676767;
+    color:#d9d9d9;
+    border:none;
+    outline:none;
+    padding:9px 12px;
+    margin: 4px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#confirm{
+    height:fit-content;
+    font-size:18px;
+    font-weight:900;
+    background-color: #676767;
+    color:#d9d9d9;
+    width:140px;
+    padding:12px 20px;
+
+    text-align: center;
+    margin: 30px 40px;
+    border-radius: 20px;
+    cursor:pointer;
+}
+
+#confirm:hover{
+    background-color: #232323;
+    user-select: none;
+}
+
+#new{
+    height:fit-content;
+    font-size:18px;
+    font-weight:900;
+    background-color: #7eaab5;
+    color:#d9d9d9;
+    width:140px;
+    padding:12px 20px;
+    text-decoration: none;
+
+    text-align: center;
+    margin: 30px 40px;
+    border-radius: 20px;
+    cursor:pointer;
+}
+
+#new:hover{
+    background-color: #2e5a65;
+    user-select: none;
+}
