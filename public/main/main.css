@@ -1,3 +1,8 @@
+:root{
+    --h:184;
+    --perc:100%;
+}
+
 *{
     font-family: 'Merriweather';
 }
@@ -97,7 +102,7 @@ body{
     width:330px;
     height: 480px;
     border-radius:30px;
-    background-color: hsla(184, 35%, 60%, 1);
+    background-color: hsla(var(--h), 35%, 60%, 1);
     color:#d9d9d9;
     display:flex;
     flex-wrap:wrap;
@@ -112,7 +117,7 @@ body{
     font-size:20px;
     font-weight:900;
     text-align: center;
-    background-color: hsla(184, 31%, 39%, 1);
+    background-color: hsla(var(--h), 31%, 39%, 1);
 }
 
 #routine-exercise-list{
@@ -142,18 +147,20 @@ body{
     border-radius: 6px;
     font-size:16px;
     font-weight:700;
-    background-color: hsla(184, 25%, 46%, 1);
+    background-color: hsla(var(--h), 25%, 46%, 1);
     padding: 7px 10px;
     user-select: none;
+    margin-bottom:4px;
 }
 
 .routine-exercise-sub{
     display: none;
     width:120px;
+    border-radius: 4px;
     margin-left:20px;
     padding:3px 8px;
     font-size:12px;
-    background-color: hsla(184, 27%, 34%, 1);
+    background-color: hsla(var(--h), 27%, 34%, 1);
 }
 
 .show .routine-exercise-sub{
@@ -161,7 +168,20 @@ body{
 }
 
 .routine-exercise-sub:hover{
-    background-color: hsla(184, 25%, 46%, 1);
+    background-color: hsla(var(--h), 25%, 46%, 1);
+}
+
+.routine-exercise .complete{
+    background-color: hsla(var(--h), 44%, 85%, 1);
+    color: hsla(var(--h), 27%, 34%, 1);
+    font-weight:900;
+    /* font-size:11px; */
+}
+
+.routine-exercise .all-complete{
+    background-color: hsla(184, 44%, 84%, 1);
+    color:hsla(var(--h), 25%, 46%, 1);
+    font-weight:900;
 }
 
 
@@ -171,7 +191,7 @@ body{
     height:330px;
     border-radius: 16px;
     margin: 0 26px;
-    background-image: linear-gradient(hsla(184, 30%, 35%, 1), hsla(184, 30%, 35%, 1) 20%, hsla(184, 45%, 82%, 1) 20%, hsla(184, 45%, 82%, 1));
+    background-image: linear-gradient(hsla(var(--h), 30%, 35%, 1), hsla(var(--h), 30%, 35%, 1) var(--perc), hsla(var(--h), 45%, 82%, 1) var(--perc), hsla(var(--h), 45%, 82%, 1));
 }
 
 #routine-progress-bar-number{

@@ -52,11 +52,11 @@ const makeInputRow = (list, util, data, i) => {
 
     let il = makeElement("div", "icon-list icon-list-"+i);
 
-    let edit = makeElement("img", "edit-"+i, "", {src:"../edit.png"});
+    let edit = makeElement("img", "edit-"+i, "", {src:"img/edit.png"});
     il.appendChild(edit);
     editWorkout(i);
 
-    let trash = makeElement("img", "del-"+i+" "+i, "", {src:"../trash.png"}); 
+    let trash = makeElement("img", "del-"+i+" "+i, "", {src:"img/trash.png"}); 
     il.appendChild(trash);
     trash.addEventListener("click", () => {deleteCurrentRoutineNode(data, getIndexFromHTML(trash, 1)); console.log(data);});
 
