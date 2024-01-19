@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link href="../css/all.css" rel="stylesheet"/>
+    <link href="login.css" rel="stylesheet"/>
+
+    <script defer src="/__/firebase/10.7.2/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.7.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <script src="signup.js" defer></script>
+</head>
+<body>
+    <div class="title_header">
+        <div class="title">Fit Tracker</div>
+        <div class="profile">
+            <div class="profile_name">iilasdfdfou</div>
+            <div class="profile_image">
+                <img src="../temp_pfp.png" alt=""/>
+                <div class="profile_dropdown"></div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header_left">
+            <a class="header_premium">Premium</a>
+        </div>
+        <div class="header_right">
+            <a href="../home/home.html" class="header_home">Home</a>
+            <a href="../planner/plan.html" class="header_plan">Plan</a>
+            <a class="header_calendar">Calendar</a>
+            <a class="header_settings">Settings</a>
+        </div>  
+    </div>
+
+    <div id="main">
+        <div id="content">
+            <div id="title">Sign Up</div>
+            <div id="email-title">Email:</div>
+            <input id="email_box" type="text"/>
+            <div id="username-title">Username:</div>
+            <input id="username_box" type="text"/>
+            <div id="password-title">Password:</div>
+            <input id="password_box" type="text"/>
+            <a href="login.html" id="new">Log in</a>
+            <div id="confirm">Sign up</div>
+        </div>
+    </div>
+</body>
+</html>

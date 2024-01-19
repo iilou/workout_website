@@ -4,29 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Fjord+One&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
     <link href="plan.css" rel="stylesheet"/>
+    <link href="../css/all.css" rel="stylesheet"/>
+
+    <!-- <script defer>console.log("c")</script> -->
+    <script src="../sampledata.js" defer></script>
+    <script src="plan.js" defer></script>
 </head>
 <body>
     <div class="title_header">
-        <div class="title">Evolve (Placeholder)</div>
+        <div class="title">Fit Tracker</div>
         <div class="profile">
-            <div class="profile_name">iilou</div>
+            <div class="profile_name">iilasdfdfou</div>
             <div class="profile_image">
-                <img src="../temp_pfp.png" alt=""/>
+                <img src="img/temp_pfp.png" alt=""/>
                 <div class="profile_dropdown"></div>
             </div>
         </div>
     </div>
     <div class="header">
         <div class="header_left">
-            <div class="header_premium">Premium</div>
+            <a class="header_premium">Premium</a>
         </div>
         <div class="header_right">
-            <a href="../home.html" class="header_home">Home</a>
+            <a href="../home/home.html" class="header_home">Home</a>
+            <a href="../main/main.html" class="header_plan">Temp Main</a>
             <a href="" class="header_plan">Plan</a>
-            <div class="header_calendar">Calendar</div>
-            <div class="header_settings">Settings</div>
+            <a class="header_calendar">Calendar</a>
+            <a class="header_settings">Settings</a>
         </div>  
     </div>
 
@@ -34,7 +44,13 @@
         <div class="main-title">
             <div class="box_title">Workout Plan</div>
             <div class="type-selection">
-                <h1>Weekly</h1>
+                <div class="type-button">Weekly</div>
+                <div class="type-field">
+                    <div class="type-title">New Day Interval: </div>
+                    <input class="type-intv-input" type="text" value="" placeholder="x" />
+                    <div class="type-confirm">Confirm</div>
+                    <div class="type-cancel">Cancel</div>
+                </div>
             </div>
         </div>
         <div class="content-box" id="1">
@@ -53,20 +69,8 @@
             <div class="editor-box">
                 <div class="preview">
                     <div class="preview-box">
-                        <div class="preview-title">Day 1: Sunday</div>
+                        <div class="preview-title"></div>
                         <div class="preview-list">
-                            <div class="preview-item">
-                                <div class="preview-item-sets">3x</div>
-                                <div class="preview-item-name">8/10/12 Push-Ups</div>
-                            </div>
-                            <div class="preview-item">
-                                <div class="preview-item-sets">3x</div>
-                                <div class="preview-item-name">8/10/12 Push-Ups</div>
-                            </div>
-                            <div class="preview-item">
-                                <div class="preview-item-sets">3x</div>
-                                <div class="preview-item-name">8/10/12 Push-Ups</div>
-                            </div>
                         </div>
                     </div>
                     <div class="preview-caption">Exercise Routing Preview for Sunday</div>
@@ -80,31 +84,8 @@
                         <div class="i-sets">Sets</div>
                     </div>
                     <div class="fdajfosdjif"></div>
-                    <div class="list">
-                        <div class="l-name">Push-Ups</div>
-                        <div class="l-reps">10</div>
-                        <div class="l-sets">3x</div>
-                        <div class="l-name">Push-Ups</div>
-                        <div class="l-reps">10</div>
-                        <div class="l-sets">3x</div>
-                        <div class="l-name">Push-Ups</div>
-                        <div class="l-reps">10</div>
-                        <div class="l-sets">3x</div>
-                    </div>
-                    <div class="util">
-                        <div class="icon-list">
-                            <img src="../edit.png" alt=""/>
-                            <img src="../trash.png" alt=""/>
-                        </div>
-                        <div class="icon-list">
-                            <img src="../edit.png" alt=""/>
-                            <img src="../trash.png" alt=""/>
-                        </div>
-                        <div class="icon-list">
-                            <img src="../edit.png" alt=""/>
-                            <img src="../trash.png" alt=""/>
-                        </div>
-                    </div>
+                    <div class="list"></div>
+                    <div class="util"></div>
                 </div>
             </div>
         </div>
