@@ -16,7 +16,8 @@ function makeElement(tagName, className, text, attr) {
 
 let user = "1111";
 let day = 0;
-let routineData = getRoutineData(user);
+// let routineData = getRoutineData(user);
+let routineData = structuredClone(defaulttempdata.routineData["1111"]);
 
 // getRoutineData(user).then(
     
