@@ -51,9 +51,9 @@ const makeRepInput = (i, data) => {return makeElement("input", "l-reps l-"+i+"-r
 const makeSetInput = (i, data) => {return makeElement("input", "l-sets l-"+i+"-sets "+i, false, {type:"text", readonly:true, value:data[i].set})};
 
 const makePreviewSet = (i, data) => {return makeElement("div", "preview-set p-set-"+i+" "+i, data[i].set+"x")};
-const makePreviewTxt = (i, data) => {return makeElement("div", "preview-txt p-txt-"+i+" "+i, data[i].rep+"/"+data[i].rep+"/"+data[i].rep+" "+data[i].name)};
+const makePreviewTxt = (i, data) => {return makeElement("div", "preview-txt p-txt-"+i+" "+i, data[i].rep+" "+data[i].name)};
 
-const changePreviewTxt = (elm, i, data) => {elm.innerHTML = data[i].rep+"/"+data[i].rep+"/"+data[i].rep+" "+data[i].name};
+const changePreviewTxt = (elm, i, data) => {elm.innerHTML = data[i].rep+" "+data[i].name};
 
 const changeIndexHTML = (elm, pi, i) => {elm.className = elm.className.replaceAll(pi, i)};
 
@@ -203,10 +203,14 @@ function loadPreview(title, pList, data, day){
 }
 
 function loadInputFields(db, user, data, day){
-    console.log(data, data[day], day);
-    document.querySelector(".list-title").value = "Exercise Plan: " + data.label[day];
+    console.log("loadinputfields",data, data[day], day);
+
+    document.querySelector(".list-title").parentNode.replaceChild(document.querySelector(".list-title").cloneNode(true), document.querySelector(".list-title"));
+
+    document.querySelector(".list-title").value = data.label[day];
     document.querySelector(".list-title").addEventListener("focus", () => { document.querySelector(".list-title").value = data.label[day] })
-    document.querySelector(".list-title").addEventListener("blur", () => {  document.querySelector(".list-title").value = document.querySelector(".list-title").value = "Exercise Plan: " + data.label[day] })
+    document.querySelector(".list-title").addEventListener("blur", () => {  document.querySelector(".list-title").value = document.querySelector(".list-title").value = data.label[day] })
+    
     document.querySelector(".list-title").addEventListener("keydown", (e) => {
         if(e.key == "Enter") {
             changeLabel(db, user, data, day);
