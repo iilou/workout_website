@@ -14,14 +14,27 @@ function makeElement(tagName, className, text, attr) {
     return element;
 }
 
-let user = "1111";
-let day = 0;
-// let routineData = getRoutineData(user);
-let routineData = structuredClone(defaulttempdata.routineData["1111"]);
+const app = firebase.app();
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-// getRoutineData(user).then(
-    
-// )
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        const uid = user.uid;
+        console.log(user);
+
+        getRoutineData(db, user.uid, (data) => {
+            let routineData = data;
+            console.log("routinedata", routineData);
+
+            loadHeader(user);
+            loadDayFunctions(user.uid, routineData);
+            loadDaySelectionButtons(user.uid, routineData);
+            loadCurrentDayView(user.uid, findCurrentDay(routineData), routineData);
+        })
+    } else {
+    }
+});
 
 
 const getNameInput = (i) => {return document.querySelector(".l-"+i+"-name")};
@@ -46,6 +59,8 @@ const changeIndexHTML = (elm, pi, i) => {elm.className = elm.className.replaceAl
 
 const getIndexFromName = (name, data) => {for(i in data) {if(data[i].name == name) return parseInt(i)};alert("couldn't find index of "+name)};
 const getIndexFromHTML = (elm, targetIndex=2) => {return parseInt(elm.className.split(" ")[targetIndex])};
+
+
 
 const makeInputRow = (list, util, data, i) => {
     let nm = makeNameInput(i, data);
@@ -79,25 +94,34 @@ const makePreviewRow = (pList, data, i) => {
     pList.appendChild(tx);
 }
 
-const makeGhost = (list, util, pList, data) => {
+const makeGhost = (list, util, pList, data, day) => {
     let ghost = makeElement("div", "l-ghost");
     let boo = makeElement("div", "l-name boo", "+");
     ghost.appendChild(boo);
     list.appendChild(ghost);
     ghost.addEventListener("click", () => {
-        addCurrentRoutineNode(data, list, pList, util);
+        addCurrentRoutineNode(data, list, pList, util, day);
     })
 } 
+
+const changeLabel = (db, user, data, day) => {
+    data.label[day] = document.querySelector(".list-title").value;
+
+    document.querySelector(".preview-title").innerHTML = data.label[day];
+    document.querySelector(`.day-${day}`).innerHTML = data.label[day];
+
+    editLabel(db, user, data.label);
+}
 
 //clone data for temp use
 function getTempRoutineData(data, day){
     return structuredClone(data[day]);
 }
 
-function saveCurrentRoutineData(data, user, day){
-    routineData[day] = structuredClone(data);
+function saveCurrentRoutineData(data, user, day, gData){
+    gData[day] = structuredClone(data);
 
-    editRoutineDataDay(data, user, day);
+    editRoutineDataDay(db, user, data, day, findCurrentDay(gData));
 }
 
 
@@ -137,14 +161,16 @@ function deleteCurrentRoutineNode(currentRoutineData, i){
 }
 
 //new
-function addCurrentRoutineNode(currentRoutineData, list, pList, util){
+function addCurrentRoutineNode(currentRoutineData, list, pList, util, day){
     let i = 0;
     while(true) { if(!(i in currentRoutineData)) {currentRoutineData[i] = {name:"boo!", rep:10, set:3}; break;} i++; }
+    
     document.querySelector(".l-ghost").remove();
     makeInputRow(list, util, currentRoutineData, i);
-    makeGhost(list, util, pList, currentRoutineData);
+    makeGhost(list, util, pList, currentRoutineData, day);6
     makePreviewRow(pList, currentRoutineData, i);
-    console.log(currentRoutineData);
+    
+    console.log(currentRoutineData, day);
 }
 
 //page inputs to json
@@ -169,21 +195,26 @@ function editWorkout(i){
 
 
 function loadPreview(title, pList, data, day){
-    // title -> Day "day"
-    // box -> list workout shit
-    // data -> data
+    title.innerHTML = data.label[day];
 
-    title.innerHTML = "Day " + day;
-
-    for(i in data) {
-        makePreviewRow(pList, data, i);
+    for(i in data[day]) {
+        makePreviewRow(pList, data[day], i);
     }
 }
 
-function loadInputFields(list, util, data, day){
-    document.querySelector(".list-title").innerHTML = "Exercise Plan: Day "+day;
+function loadInputFields(db, user, data, day){
+    console.log(data, data[day], day);
+    document.querySelector(".list-title").value = "Exercise Plan: " + data.label[day];
+    document.querySelector(".list-title").addEventListener("focus", () => { document.querySelector(".list-title").value = data.label[day] })
+    document.querySelector(".list-title").addEventListener("blur", () => {  document.querySelector(".list-title").value = document.querySelector(".list-title").value = "Exercise Plan: " + data.label[day] })
+    document.querySelector(".list-title").addEventListener("keydown", (e) => {
+        if(e.key == "Enter") {
+            changeLabel(db, user, data, day);
+            document.querySelector(".list-title").blur();
+        }
+    })
 
-    for(let i in data){ makeInputRow(list, util, data, i); }
+    for(let i in data[day]){ makeInputRow(document.querySelector(".list"), document.querySelector(".util"), data[day], i); }
 }
 
 function loadDaySelectionButtons(user, data){
@@ -195,29 +226,31 @@ function loadDaySelectionButtons(user, data){
         let display = "label" in data?data["label"][i]:"Day "+(i+1);
         let day = makeElement("div", "day day-"+i, display);
         container.appendChild(day);
-        day.addEventListener("click", () => {loadCurrentDayView(user, i, routineData); });
+        day.addEventListener("click", () => {loadCurrentDayView(user, i, data); });
     }
 }
 
 function loadCurrentDayView(user, day, data){
+
     const list = document.querySelector(".list");
     const util = document.querySelector(".util");
     const previewTitle = document.querySelector(".preview-title");
     const previewList = document.querySelector(".preview-list");
 
-    let currentRoutineData = getTempRoutineData(data, day);
+    let currentRoutineData = data[day];
     document.querySelector(".save-button").replaceWith(document.querySelector(".save-button").cloneNode(true));
-    document.querySelector(".save-button").addEventListener("click", (e) => saveCurrentRoutineData(currentRoutineData, user, day))
+    document.querySelector(".save-button").addEventListener("click", (e) => saveCurrentRoutineData(currentRoutineData, user, day, data))
 
+    for(let i = 0; i < data.interval; i++) document.querySelector(".day-"+i).className = "day day-"+i+(day==i?" current":"");
 
     list.innerHTML = "";
     util.innerHTML = "";
     previewTitle.innerHTML = "";
     previewList.innerHTML = "";
 
-    loadInputFields(list, util, currentRoutineData, day);
-    loadPreview(previewTitle, previewList, currentRoutineData, day);
-    makeGhost(list, util, previewList, currentRoutineData);
+    loadInputFields(db, user, data, day);
+    loadPreview(previewTitle, previewList, data, day);
+    makeGhost(list, util, previewList, currentRoutineData, day);
 }
 
 const typeHTML = { 
@@ -227,10 +260,11 @@ const typeHTML = {
     cancel: document.querySelector(".type-cancel")
 }
 
-function changeDayInterval(user, newIntv, oldIntv, routineData){
+function changeDayInterval(newIntv, oldIntv, routineData){
     if(oldIntv==newIntv) return;
 
     routineData.interval = newIntv;//database write
+    
 
     if(newIntv>oldIntv){
         for(let i = oldIntv; i < newIntv; i++){
@@ -252,8 +286,8 @@ function loadTypeInputFields(user, data){
     document.querySelector(".type-confirm").addEventListener("click", () => {
         if(!isNaN(parseInt(typeHTML.input.value))) {
 
-            editRoutineData(user, parseInt(typeHTML.input.value), data.interval);
-            changeDayInterval(user, parseInt(typeHTML.input.value), data.interval, data);
+            editDayInterval(db, user,   parseInt(typeHTML.input.value), data.interval, data );
+            changeDayInterval(          parseInt(typeHTML.input.value), data.interval, data );
 
             loadDaySelectionButtons(user, data);
             loadCurrentDayView(user, 0, data);
@@ -268,8 +302,3 @@ function loadDayFunctions(user, data){
     const type = document.querySelector(".type-button");
     type.addEventListener("click", () => { loadTypeInputFields(user, data) });
 }
-
-
-loadDayFunctions(user, routineData);
-loadDaySelectionButtons(user, routineData);
-loadCurrentDayView(user, day, routineData);

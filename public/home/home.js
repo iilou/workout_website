@@ -43,3 +43,13 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        const uid = user.uid;
+
+        window.location.href = "../main/main.js"
+    } else {
+    }
+});
+  

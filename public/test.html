@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link href="css/all.css" rel="stylesheet"/>
+    <link href="test.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="edit-pfp-cover">
+        <div id="edit-menu">
+            <div id="edit-drop"></div>
+            <div id="edit-caption">Drag / Upload Files         or        Paste Link Below</div>
+            <div id="edit-url">
+                <input type="text" id="edit-url-field" placeholder="Paste Link Here"/>
+                <div id="edit-url-confirm">Confirm</div>
+            </div>
+        </div>
+    </div>
+    <div class="title_header">
+        <div class="title">Fit Tracker</div>
+        <div class="profile">
+            <div class="profile_name">iilasdfdfou</div>
+            <div class="profile_dropdown">
+                <img class="profile_pic profile_img" src="../temp_pfp.png" alt=""/>
+                <img class=" img_overlay" src="../edit_profile.png" alt="">
+                </img>
+                <div class="profile_dropdown_item_list">
+                    <div class="profile_dropdown_item account_settings">Account Settings</div>
+                    <div class="profile_dropdown_item sign_out">Sign Out</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header_left">
+            <a class="header_premium">Premium</a>
+        </div>
+        <div class="header_right">
+            <a href="../home/home.html" class="header_home">Home</a>
+            <a href="../main/main.html" class="header_plan">Home</a>
+            <a href="../planner/plan.html" class="header_plan">Plan</a>
+            <a class="header_calendar">Calendar</a>
+            <a class="header_settings">Account Settings</a>
+        </div>  
+    </div>
+    <script>
+        function makeElement(tagName, className, text=false, attr=false) {
+            var element = document.createElement(tagName);
+            element.className = className;
+            if (text) {
+                element.textContent = text;
+            }
+            if (attr) {
+                for (var key in attr) {
+                    element.setAttribute(key, attr[key]);
+                }
+            }
+            return element;
+        }
+
+        const loadEditPfpCover = () => {
+            document.getElementById("edit-pfp-cover").style.display="block";
+
+            let drop = makeElement("div", "edit-dropbox");
+            let img = makeElement("div", "edit-dropbox-img", false, {draggable:"true"})
+            let input = makeElement("input", "", "", {
+                type:"file",
+                accept:".png,.jpg,.jpeg",
+                title:" ",
+                style:"display:none"
+            })
+
+            document.getElementById("edit-drop").innerHTML="";
+            document.getElementById("edit-drop").appendChild(drop);
+            drop.appendChild(img);
+            img.appendChild(input);
+            img.addEventListener("click", () => {input.click()});
+
+            let dragged={v:false};
+            img.addEventListener("dragover", (event) => {if(!dragged.v){dragged.v=true; drop.classList.add("drag-hover");document.getElementById("edit-pfp-cover").classList.add("drag-hover")}; event.preventDefault();});
+            img.addEventListener("dragleave", (event) => {if(dragged.v){dragged.v=false; drop.classList.remove("drag-hover");document.getElementById("edit-pfp-cover").classList.remove("drag-hover")}; event.preventDefault();});
+            img.addEventListener("drop", (e) => {dragged.v=false; drop.classList.remove("drag-hover");document.getElementById("edit-pfp-cover").classList.remove("drag-hover"); dropHandler(e)});
+
+
+            function readImage(file) {
+                // Check if the file is an image.
+                if (file.type && !file.type.startsWith('image/')) {
+                    console.log('File is not an image.', file.type, file);
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.addEventListener('load', (event) => {
+                    document.body.style.backgroundColor = `${event.target.result}`;
+                    console.log(event.target.result);
+                });
+                reader.readAsDataURL(file);
+            }
+
+            function dropHandler(ev) {
+                console.log("File(s) dropped");
+
+                ev.preventDefault();
+
+                if (ev.dataTransfer.items) {
+                    [...ev.dataTransfer.items].forEach((item, i) => {
+                        if (item.kind === "file") {
+                            const file = item.getAsFile();
+                            console.log(`… file[${i}].name = ${file.name}`);
+                            console.log(file);
+                            readImage(file);
+                        }
+                    });
+                } else {
+                    // Use DataTransfer interface to access the file(s)
+                    [...ev.dataTransfer.files].forEach((file, i) => {
+                        console.log(`… file[${i}].name = ${file.name}`);    
+                        console.log(file);
+                        readImage(file);
+                    });
+                }
+            }
+        }
+
+        document.getElementById("edit-pfp-cover").addEventListener("click", (e) => {
+            console.log(e.target.id, e.target.id == "edit-pfp-cover");
+            if(e.target.id == "edit-pfp-cover") document.getElementById("edit-pfp-cover").style.display="none";
+        })
+
+        document.querySelector(".img_overlay").addEventListener("click", () => {
+            loadEditPfpCover();
+        })
+
+        loadEditPfpCover();
+    </script>
+</body>
+</html>

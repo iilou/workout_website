@@ -8,7 +8,7 @@ auth.onAuthStateChanged((user) => {
     const uid = user.uid;
     console.log(user, uid);
 
-    // window.location.href = "../main/main.html";
+    window.location.href = "../main/main.html";
   } else {
   }
 });

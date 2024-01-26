@@ -1,0 +1,97 @@
+
+*{
+    font-family: 'Merriweather';
+}
+
+body{
+    border:none;
+    margin:0;
+    padding:0;
+    background-color: #040404;
+    background-image: url("https://m.media-amazon.com/images/M/MV5BOTRiMDg0NjItYmY1OS00NGFlLThkNGMtNWUyMTk4MWJlYTBhXkEyXkFqcGdeQXVyMTQ2Mzc5OTIz._V1_.jpg");
+}
+
+#edit-pfp-cover{
+    width:100%;
+    height:100vh;
+    background-color: #9191918a;
+    position:absolute;
+    z-index:20000;
+}
+
+#edit-menu{
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    width:1050px;
+    height:600px;
+    margin:auto;
+    margin-top:50px;
+}
+
+#edit-drop{
+    width:1000px;
+    height:340px;
+    /* background-color: #343434; */
+    margin:30px auto 0 auto;
+    transform: translateY(30px);
+
+}
+
+.edit-dropbox{
+    width:980px;
+    height:340px;
+    margin:auto;
+    border-radius: 30px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%23898989FF' stroke-width='4' stroke-dasharray='5%2c17' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    background-color: #cecece;
+    position:absolute;
+}
+
+.edit-dropbox-img{
+    width:980px;
+    height:340px;
+    margin:auto;
+    background-image: url("https://i.pinimg.com/originals/04/54/7c/04547c2b354abb70a85ed8a2d1b33e5f.png");
+    background-size: 70px 70px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+    padding:0;
+    opacity:0.3;
+    color:transparent;
+}
+
+#edit-pfp-cover.drag-hover{
+    background-color:#919191b5;
+}
+
+.edit-dropbox.drag-hover{
+    background-color: #787878;
+    /* border:100000px solid #787878aa; */
+}
+
+.edit-dropbox:hover{
+    background-color: #b5b5b5;
+}
+
+.edit-dropbox:hover .edit-dropbox-img{
+    opacity:0.7;
+}
+
+
+#edit-caption{
+    width:1000px;
+    height:90px;
+    /* border-bottom: 6px solid #828282; */
+    margin:auto;
+    margin-top:30px;
+    font-size:22px;
+    font-weight:900;
+    color:#797979;
+    text-align: center;
+    background-image: linear-gradient(90deg, #787878 0%, #787878 24%, #78787800 24%, #78787800 76%, #787878 76%, #787878 100%);
+    background-size: 1000px 5px;
+    background-position: 0 40px;
+    line-height:85px;
+    background-repeat: no-repeat;
+}

@@ -24,13 +24,25 @@
     <script src="main.js" defer></script>
 </head>
 <body>
+    <div id="edit-pfp-cover">
+        <div id="edit-menu">
+            <div id="edit-drop"></div>
+            <div id="edit-crop"></div>
+            <div id="edit-confirm"></div>
+        </div>
+    </div>
     <div class="title_header">
         <div class="title">Fit Tracker</div>
         <div class="profile">
             <div class="profile_name">iilasdfdfou</div>
-            <div class="profile_image">
-                <img src="../temp_pfp.png" alt=""/>
-                <div class="profile_dropdown"></div>
+            <div class="profile_dropdown">
+                <img class="profile_pic profile_img" src="../temp_pfp.png" alt=""/>
+                <img class=" img_overlay" src="../edit_profile.png" alt="">
+                </img>
+                <div class="profile_dropdown_item_list">
+                    <div class="profile_dropdown_item account_settings">Account Settings</div>
+                    <div class="profile_dropdown_item sign_out">Sign Out</div>
+                </div>
             </div>
         </div>
     </div>
@@ -40,9 +52,10 @@
         </div>
         <div class="header_right">
             <a href="../home/home.html" class="header_home">Home</a>
+            <a href="../main/main.html" class="header_plan">Home</a>
             <a href="../planner/plan.html" class="header_plan">Plan</a>
             <a class="header_calendar">Calendar</a>
-            <a class="header_settings">Settings</a>
+            <a class="header_settings">Account Settings</a>
         </div>  
     </div>
     <div id="loading-cover">Signing in Account...</div>
@@ -53,63 +66,94 @@
             <div id="progress-pie-container"></div>
         </div>
         <div id="col2">
-            <div id="embed"></div>
+            <div id="embed">Spotify API hasn't responded, reload the page or check your internet or something</div>
         </div>
         <div id="col3">
             <div id="routine-container">
                 <div id="routine-title">Day 1: "Woooo!!!"</div>
-                    <div id="routine-exercise-list">
-                        <div class="routine-exercise">
-                            <div class="routine-exercise-name">Push Ups</div>
-                            <div class="routine-exercise-sub complete">10 Reps</div>
-                            <div class="routine-exercise-sub complete">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub complete">10 Reps</div>
-                        </div>
-                        <div class="routine-exercise">
-                            <div class="routine-exercise-name">Sit Ups</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                        </div>
-                        <div class="routine-exercise">
-                            <div class="routine-exercise-name">Sit Ups</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                        </div>
-                        <div class="routine-exercise">
-                            <div class="routine-exercise-name">Sit Ups</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                            <div class="routine-exercise-sub">10 Reps</div>
-                        </div>
+                <div id="routine-exercise-list">
+                    <div class="routine-exercise">
+                        <div class="routine-exercise-name">Push Ups</div>
+                        <div class="routine-exercise-sub complete">10 Reps</div>
+                        <div class="routine-exercise-sub complete">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub complete">10 Reps</div>
                     </div>
-                    <div id="routine-progress">
-                        <div id="routine-progress-bar"></div>
-                        <div id="routine-progress-bar-number">70%</div>
+                    <div class="routine-exercise">
+                        <div class="routine-exercise-name">Sit Ups</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
                     </div>
+                    <div class="routine-exercise">
+                        <div class="routine-exercise-name">Sit Ups</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                    </div>
+                    <div class="routine-exercise">
+                        <div class="routine-exercise-name">Sit Ups</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                        <div class="routine-exercise-sub">10 Reps</div>
+                    </div>
+                </div>
+                <div id="routine-progress">
+                    <div id="routine-progress-bar"></div>
+                    <div id="routine-progress-bar-number">70%</div>
                 </div>
                 <!-- <script>let asdf = document.getElementById("routine-exercise-list").querySelectorAll(".routine-exercise"); 
                         let bb = document.getElementById("routine-exercise-list").querySelectorAll(".routine-exercise-name");
                 for(let i = 0; i < bb.length; i++) bb[i].addEventListener("click", (e) => {asdf[i].className.includes("show")?asdf[i].className="routine-exercise":asdf[i].className="routine-exercise show"})</script> -->
             </div>
+
+            <div id="playlist">
+                <div id="playlist-title">Edit PlayList Link</div>
+                <div id="playlist-fill"></div>
+                <!-- <div id="playlist-link">https://open.spotify.com/playlist/4E5nfjasdjfdj</div> -->
+                <input type="text" id="playlist-link" value="https://open.spotify.com/playlist/4E5nfjasdjfdj"/>
+                <div id="playlist-confirm">*</div>
+                <div class="playlist-warning">**If you're using spotify, you can only play the 100 songs on a playlist because spotify api lol, not that you'd ever need more</div>
+                <a target="_blank" href="https://open.spotify.com" class="playlist-warning">**If you're using spotify, please make sure you've logged in</a>
+                <a target="_blank" href="https://chromewebstore.google.com/detail/volume-master/jghecgabfgfdldnmbfkhmffcabddioke" class="playlist-warning">**If you're using spotify, please use this extension for volume adjustment since the spotify api doesn't support volume control for some reason</a>
+            </div>
         </div>
     </div>
     <script>
-        window.onSpotifyIframeApiReady = (IFrameAPI) => {
-            const element = document.getElementById('embed');
-            const options = {
-                width:document.getElementById("embed").getBoundingClientRect().width,
-                height:document.getElementById("embed").getBoundingClientRect().height,
-                uri: 'spotify:playlist:4E5nw9xCw5fzMf5xPMUppP'
-            };
-            const callback = (EmbedController) => {};
-            IFrameAPI.createController(element, options, callback);
+    function toUri(str){
+        if(str.includes("spotify:")) return str;
+        if(str.includes("playlist")){
+            return "spotify:playlist:"+str.split("playlist/")[1].split("?")[0];
+        }
+        if(str.includes("track")){
+            return "spotify:track:"+str.split("track/")[1].split("?")[0];
+        }
+        return "";
+    }
+    
+    var swapSong = (link) =>{
+        console.log("swapsong not init");
+    }
+    
+    const callback = (EmbedController) => {
+        swapSong = (link) => {
+            console.log("swap to: " + link, EmbedController);
+            EmbedController.loadUri(toUri(link))
+        }
+    }; 
+    
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        const element = document.getElementById('embed');
+        const options = {
+            width:500,
+            height:900,
+            uri: ""
         };
+        IFrameAPI.createController(element, options, callback);
+    };
     </script>
 </body>
 </html>

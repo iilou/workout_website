@@ -1,0 +1,170 @@
+everything kinda works just spice up
+add account settings personalizzation
+    pfp inline system sorta working, gotta add storage and cropping feature
+        storage could just be with firestore as base64 encoded string, may be inefficient
+    add username, password, feature
+
+add logout feature
+add auto switch to home tab when auth exists in login and signup pages
+
+add calendar, should be easy, just maybe css heavy
+
+
+
+
+
+
+
+
+
+command:
+
+cd C:\Users\limar\OneDrive\Desktop\workout_website && firebase serve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tmpdata
+
+
+const defaulttempdata ={
+    users:{
+        "1111":{
+            username:"",
+            displayName:"",
+            pw:""
+        }
+    },
+
+    timelineData:{
+        "1111":{}
+    },
+    
+    currentDay:{
+        "1111":{
+            playlistType:"spotify",
+            date:20240118,
+            day:0,
+
+            score:{
+                0:{
+                    sets:3,
+                    0:false,
+                    1:false,
+                    2:false,
+                },
+                1:{
+                    sets:3,
+                    0:false,
+                    1:false,
+                    2:false,
+                },
+                2:{
+                    sets:3,
+                    0:false,
+                    1:false,
+                    2:false,
+                },
+                3:{
+                    sets:3,
+                    0:false,
+                    1:false,
+                    2:false,
+                },
+            }
+        }
+
+    },
+
+    routineData:{
+        "1111":{
+            interval:3,
+            intervalZero:20240109,
+            label:["Arms", "Abs", "Legs"],
+            
+
+            0:{
+                0:{
+                    name:"PushUps",
+                    set:3,
+                    rep:15,
+                    decrement:2,
+                },
+                1:{
+                    name:"Bicep Curls",
+                    weight:20,
+                    set:3,
+                    rep:20,
+                    decrement:3
+                },
+                2:{
+                    name:"Sit Ups",
+                    set:3,
+                    rep:25,
+                    decrement:0,
+                },
+                3:{
+                    name:"Leg Raises",
+                    set:3,
+                    rep:12,
+                    decrement:1
+                }
+            },
+            1:{
+                0:{
+                    name:"Sit Ups",
+                    set:3,
+                    rep:25,
+                    decrement:0,
+                },
+                1:{
+                    name:"Leg Raises",
+                    set:3,
+                    rep:12,
+                    decrement:1
+                }
+            },
+            2:{
+                0:{
+                    name:"Squats",
+                    weight:20,
+                    weightIncrement:1,
+                    weightSnap:5,
+                    set:3,
+                    rep:15,
+                    decrement:2,
+                },
+                1:{
+                    name:"Pistol Squat",
+                    set:3,
+                    rep:5,
+                    decrement:2
+                }
+            }
+        }
+    }
+}
+
+
+const addlocalstoragedata = () => {
+    localStorage.setItem("temp", JSON.stringify(tempdata));
+}
+
+const getlocalstoragedata = () => {
+    return JSON.parse(localStorage.getItem("temp"));
+}
+
+const tempdata = defaulttempdata;
+addlocalstoragedata();
+// const tempdata = getlocalstoragedata(); // doesnt happen in actual program, makeshift database

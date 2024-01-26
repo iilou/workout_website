@@ -12,6 +12,10 @@
     <link href="plan.css" rel="stylesheet"/>
     <link href="../css/all.css" rel="stylesheet"/>
 
+    <script defer src="/__/firebase/10.7.2/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.7.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.7.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <!-- <script defer>console.log("c")</script> -->
     <script src="../sampledata.js" defer></script>
     <script src="plan.js" defer></script>
@@ -21,9 +25,14 @@
         <div class="title">Fit Tracker</div>
         <div class="profile">
             <div class="profile_name">iilasdfdfou</div>
-            <div class="profile_image">
-                <img src="img/temp_pfp.png" alt=""/>
-                <div class="profile_dropdown"></div>
+            <div class="profile_dropdown">
+                <img class="profile_pic profile_img" src="../temp_pfp.png" alt=""/>
+                <img class=" img_overlay" src="../edit_profile.png" alt="">
+                </img>
+                <div class="profile_dropdown_item_list">
+                    <div class="profile_dropdown_item account_settings">Account Settings</div>
+                    <div class="profile_dropdown_item sign_out">Sign Out</div>
+                </div>
             </div>
         </div>
     </div>
@@ -33,10 +42,10 @@
         </div>
         <div class="header_right">
             <a href="../home/home.html" class="header_home">Home</a>
-            <a href="../main/main.html" class="header_plan">Temp Main</a>
+            <a href="../main/main.html" class="header_plan">Home</a>
             <a href="" class="header_plan">Plan</a>
             <a class="header_calendar">Calendar</a>
-            <a class="header_settings">Settings</a>
+            <a class="header_settings">Account Settings</a>
         </div>  
     </div>
 
@@ -76,7 +85,7 @@
                     <div class="preview-caption">Exercise Routing Preview for Sunday</div>
                 </div>
                 <div class="list-container">
-                    <div class="list-title">Sunday's Exercise Plan</div>
+                    <input class="list-title" type="text"/>
                     <div class="fdajfosdjif"></div>
                     <div class="identifiers">
                         <div class="i-name">Name</div>
